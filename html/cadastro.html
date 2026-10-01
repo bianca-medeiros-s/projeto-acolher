@@ -1,184 +1,132 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Cadastro - Projeto Acolher</title>
-    <link rel="stylesheet" href="css/style.css">
+
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+
 </head>
 
 <body>
 
-<header>
-    <div class="logo-area">
-        <img src="imagens/logo.png" alt="Logo do Projeto Acolher">
-        <h1>Projeto Acolher</h1>
-    </div>
+    <header>
 
-    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <div class="logo-area">
 
-    <label for="menu-toggle" class="menu-icon" aria-label="Abrir menu">
-        ☰
-    </label>
+            <img
+                src="/imagens/logo.png"
+                alt="Logo do Projeto Acolher"
+            >
 
-    <nav>
-        <ul>
-            <li>
-                <a href="index.html">Início</a>
-            </li>
+            <h1>Projeto Acolher</h1>
 
-            <li class="dropdown">
-                <a href="projetos.html">Projetos ▾</a>
+        </div>
 
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="projetos.html#doacoes">Doações</a>
-                    </li>
+        <input
+            type="checkbox"
+            id="menu-toggle"
+            class="menu-toggle"
+        >
 
-                    <li>
-                        <a href="projetos.html#voluntariado">Voluntariado</a>
-                    </li>
-                </ul>
-            </li>
+        <label
+            for="menu-toggle"
+            class="menu-icon"
+            aria-label="Abrir menu"
+        >
+            ☰
+        </label>
 
-            <li>
-                <a href="cadastro.html">Cadastro</a>
-            </li>
-        </ul>
-    </nav>
-</header>
+        <nav>
 
-<main>
+            <ul>
 
-    <section>
+                <li>
+                    <a href="index.html">
+                        Início
+                    </a>
+                </li>
 
-        <h2>Cadastro</h2>
+                <li class="dropdown">
 
-        <p>
-            Preencha o formulário para demonstrar seu interesse
-            em participar das ações do Projeto Acolher.
-        </p>
+                    <a href="projetos.html">
+                        Projetos ▾
+                    </a>
 
-        <form class="formulario">
+                    <ul class="dropdown-menu">
 
-            <fieldset>
+                        <li>
+                            <a href="projetos.html#doacoes">
+                                Doações
+                            </a>
+                        </li>
 
-                <legend>Dados pessoais</legend>
+                        <li>
+                            <a href="projetos.html#voluntariado">
+                                Voluntariado
+                            </a>
+                        </li>
 
-                <div class="campo">
-                    <label for="nome">Nome completo</label>
-                    <input
-                        type="text"
-                        id="nome"
-                        name="nome"
-                        required
-                    >
-                </div>
+                    </ul>
 
-                <div class="campo">
-                    <label for="cpf">CPF</label>
-                    <input
-                        type="text"
-                        id="cpf"
-                        name="cpf"
-                        placeholder="000.000.000-00"
-                        pattern="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"
-                        required
-                    >
-                </div>
+                </li>
 
-            </fieldset>
+                <li>
+                    <a href="cadastro.html">
+                        Cadastro
+                    </a>
+                </li>
 
-            <fieldset>
+            </ul>
 
-                <legend>Endereço</legend>
+        </nav>
 
-                <div class="campo">
-                    <label for="endereco">Endereço</label>
-                    <input
-                        type="text"
-                        id="endereco"
-                        name="endereco"
-                        required
-                    >
-                </div>
+    </header>
 
-                <div class="campo">
-                    <label for="cep">CEP</label>
-                    <input
-                        type="text"
-                        id="cep"
-                        name="cep"
-                        placeholder="00000-000"
-                        pattern="[0-9]{5}-[0-9]{3}"
-                        required
-                    >
-                </div>
+    <main>
 
-            </fieldset>
+        <section>
 
-            <fieldset>
+            <h2>Cadastro</h2>
 
-                <legend>Contato</legend>
+            <p>
+                Preencha o formulário para demonstrar seu interesse
+                em participar das ações do Projeto Acolher.
+            </p>
 
-                <div class="campo">
-                    <label for="email">E-mail</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                    >
-                </div>
+            <form class="formulario">
 
-                <div class="campo">
-                    <label for="telefone">Telefone</label>
-                    <input
-                        type="tel"
-                        id="telefone"
-                        name="telefone"
-                        placeholder="(00) 00000-0000"
-                        pattern="\([0-9]{2}\) [0-9]{5}-[0-9]{4}"
-                        required
-                    >
-                </div>
+                <fieldset>
 
-            </fieldset>
+                    <legend>Dados pessoais</legend>
 
-            <fieldset>
+                    <div class="campo">
 
-                <legend>Interesse</legend>
+                        <label for="nome">
+                            Nome completo
+                        </label>
 
-                <div class="campo">
-                    <label for="interesse">Como deseja participar?</label>
+                        <input
+                            type="text"
+                            id="nome"
+                            name="nome"
+                            required
+                        >
 
-                    <select id="interesse" name="interesse" required>
-                        <option value="">Selecione uma opção</option>
-                        <option value="doacao">Doações</option>
-                        <option value="voluntariado">Voluntariado</option>
-                    </select>
-                </div>
+                    </div>
 
-            </fieldset>
+                    <div class="campo">
 
-            <div class="alerta alerta-sucesso">
-                <strong>Validação:</strong>
-                campos preenchidos corretamente serão sinalizados visualmente.
-            </div>
-
-            <button type="submit" class="botao">
-                Enviar cadastro
-            </button>
-
-        </form>
-
-    </section>
-
-</main>
-
-<footer>
-    <p>&copy; 2026 Projeto Acolher. Todos os direitos reservados.</p>
-</footer>
-
-</body>
-</html>
+                        <
