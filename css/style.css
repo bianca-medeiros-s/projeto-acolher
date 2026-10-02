@@ -1,53 +1,22 @@
-/* ==============================
-   RESET
-   ============================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #FAF9F6;
-    color: #26352D;
-    line-height: 1.6;
-}
-
-img {
-    display: block;
-    max-width: 100%;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button,
-input,
-select,
-textarea {
-    font: inherit;
-}
+/* ==================================================
+   PROJETO ACOLHER
+   CSS PRINCIPAL
+   ================================================== */
 
 
-/* ==============================
-   VARIÁVEIS
-   ============================== */
+/* ==================================================
+   1. VARIÁVEIS
+   ================================================== */
 
 :root {
-    --cor-primaria: #2F6B4F;
-    --cor-primaria-escura: #24523C;
-    --cor-primaria-clara: #DCEDE3;
 
-    --cor-secundaria: #D98B3A;
-    --cor-secundaria-clara: #F5E3CF;
+    --verde: #2F6B4F;
+    --verde-escuro: #24523C;
+    --verde-claro: #DCEDE3;
+
+    --laranja: #D98B3A;
+    --laranja-claro: #F5E3CF;
 
     --fundo: #FAF9F6;
     --fundo-verde: #F0F5F1;
@@ -58,6 +27,9 @@ textarea {
     --branco: #FFFFFF;
     --borda: #DDE5DF;
 
+    --sucesso: #E6F4EA;
+    --erro: #FCE8E6;
+
     --sombra: 0 8px 24px rgba(36, 82, 60, 0.10);
 
     --raio: 16px;
@@ -65,42 +37,77 @@ textarea {
 }
 
 
-/* ==============================
-   ESTRUTURA
-   ============================== */
+/* ==================================================
+   2. RESET
+   ================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
 
 body {
     min-height: 100vh;
-}
 
-header,
-main,
-footer {
-    width: 100%;
-}
+    font-family: Arial, Helvetica, sans-serif;
 
-header > *,
-main > *,
-footer > * {
-    max-width: var(--largura);
-    margin-left: auto;
-    margin-right: auto;
+    background: var(--fundo);
+    color: var(--texto);
+
+    line-height: 1.6;
 }
 
 
-/* ==============================
-   HEADER
-   ============================== */
+img {
+    display: block;
+    max-width: 100%;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+
+/* ==================================================
+   3. CABEÇALHO
+   ================================================== */
 
 header {
-    background: var(--branco);
-    border-bottom: 1px solid var(--borda);
-    padding: 18px 30px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    width: 100%;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 30px;
+
+    padding: 14px 5%;
+
+    background: var(--branco);
+    border-bottom: 1px solid var(--borda);
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
 }
+
 
 .logo-area {
     display: flex;
@@ -108,108 +115,234 @@ header {
     gap: 12px;
 }
 
+
+.logo-area a {
+    display: flex;
+    align-items: center;
+}
+
+
 .logo-area img {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
+
     object-fit: contain;
 }
 
+
 .logo-area h1 {
-    color: var(--cor-primaria);
-    font-size: 1.45rem;
+    color: var(--verde-escuro);
+
+    font-size: 1.3rem;
 }
 
+
+/* ==================================================
+   4. NAVEGAÇÃO
+   ================================================== */
+
 nav ul {
-    list-style: none;
     display: flex;
     align-items: center;
     gap: 28px;
+
+    list-style: none;
 }
 
+
+nav li {
+    position: relative;
+}
+
+
 nav a {
+    position: relative;
+
     color: var(--texto);
+
+    font-size: 0.95rem;
     font-weight: 600;
+
     transition: color 0.2s ease;
 }
 
-nav a:hover,
-nav a:focus {
-    color: var(--cor-primaria);
+
+nav a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--laranja);
+
+    transition: width 0.2s ease;
 }
 
 
-/* ==============================
-   TAG
-   ============================== */
-
-.tag {
-    display: inline-block;
-    color: var(--cor-primaria);
-    background: var(--cor-primaria-clara);
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-size: 0.78rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+nav a:hover {
+    color: var(--verde);
 }
 
 
-/* ==============================
-   BOTÕES
-   ============================== */
+nav a:hover::after {
+    width: 100%;
+}
 
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
 
-    background: var(--cor-primaria);
+/* ==================================================
+   5. MENU MOBILE
+   ================================================== */
+
+.menu-toggle {
+    display: none;
+}
+
+
+.menu-icon {
+    display: none;
+
+    padding: 7px 11px;
+
+    background: var(--verde);
+
+    border-radius: 8px;
+
     color: var(--branco);
 
-    border: 2px solid var(--cor-primaria);
-    border-radius: 10px;
-
-    padding: 12px 22px;
-
-    font-weight: 700;
     cursor: pointer;
+
+    font-size: 1.2rem;
+    line-height: 1;
+
+    user-select: none;
 
     transition:
         background 0.2s ease,
-        color 0.2s ease,
         transform 0.2s ease;
 }
 
-.btn:hover {
-    background: var(--cor-primaria-escura);
-    border-color: var(--cor-primaria-escura);
-    transform: translateY(-2px);
+
+.menu-icon:hover {
+    background: var(--verde-escuro);
 }
 
-.btn-claro {
+
+.menu-toggle:checked + .menu-icon {
+    background: var(--verde-escuro);
+}
+
+
+/* ==================================================
+   6. DROPDOWN
+   ================================================== */
+
+.dropdown-menu {
+    position: absolute;
+
+    top: calc(100% + 12px);
+    left: 0;
+
+    min-width: 190px;
+
+    display: none;
+    flex-direction: column;
+
+    padding: 8px;
+
     background: var(--branco);
-    color: var(--cor-primaria);
-    border-color: var(--branco);
+
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+
+    box-shadow: var(--sombra);
 }
 
-.btn-claro:hover {
-    background: var(--cor-primaria-clara);
-    border-color: var(--cor-primaria-clara);
+
+.dropdown:hover .dropdown-menu {
+    display: flex;
 }
 
 
-/* ==============================
-   HERO
-   ============================== */
+.dropdown-menu li {
+    width: 100%;
+}
+
+
+.dropdown-menu a {
+    display: block;
+
+    padding: 9px 12px;
+
+    border-radius: 8px;
+}
+
+
+.dropdown-menu a:hover {
+    background: var(--verde-claro);
+}
+
+
+.dropdown-menu a::after {
+    display: none;
+}
+
+
+/* ==================================================
+   7. CONTEÚDO
+   ================================================== */
+
+main {
+    width: min(92%, var(--largura));
+
+    margin: 0 auto;
+}
+
+
+section {
+    padding: 55px 0;
+}
+
+
+h2 {
+    margin-bottom: 14px;
+
+    color: var(--verde-escuro);
+
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+
+    line-height: 1.2;
+}
+
+
+h3 {
+    margin-bottom: 10px;
+
+    color: var(--verde-escuro);
+
+    line-height: 1.3;
+}
+
+
+p {
+    color: var(--texto-claro);
+}
+
+
+/* ==================================================
+   8. HERO
+   ================================================== */
 
 .hero {
-    max-width: var(--largura);
-
     min-height: 450px;
 
     display: grid;
+
     grid-template-columns: 0.95fr 1.05fr;
+
     align-items: center;
 
     gap: 45px;
@@ -217,41 +350,41 @@ nav a:focus {
     padding: 55px 0;
 }
 
+
 .hero-conteudo {
     max-width: 540px;
 }
 
-.hero h2 {
-    margin: 16px 0 18px;
 
-    color: var(--cor-primaria-escura);
+.hero h2 {
+    margin: 14px 0 18px;
 
     font-size: clamp(2rem, 3.5vw, 3.1rem);
+
     line-height: 1.12;
 }
 
+
 .hero p {
     max-width: 520px;
-    margin-bottom: 26px;
 
-    color: var(--texto-claro);
-    font-size: 1.05rem;
+    margin-bottom: 24px;
+
+    font-size: 1rem;
 }
+
 
 .hero-imagem {
     display: flex;
+
     justify-content: flex-end;
-    align-items: center;
 }
+
 
 .hero-imagem img {
     width: 100%;
     max-width: 520px;
 
-    /*
-       Tamanho controlado para evitar
-       que a imagem fique gigantesca.
-    */
     height: 330px;
 
     object-fit: cover;
@@ -262,211 +395,226 @@ nav a:focus {
 }
 
 
-/* ==============================
-   SOBRE
-   ============================== */
+/* ==================================================
+   9. TAG
+   ================================================== */
 
-.sobre {
-    max-width: var(--largura);
+.tag {
+    display: inline-block;
 
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    padding: 6px 13px;
 
-    gap: 55px;
+    border-radius: 999px;
+
+    background: var(--laranja-claro);
+
+    color: #8A4F18;
+
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+
+/* ==================================================
+   10. BOTÕES
+   ================================================== */
+
+.btn,
+.botao {
+    display: inline-flex;
+
     align-items: center;
+    justify-content: center;
 
-    padding: 80px 0;
-}
+    min-height: 44px;
 
-.sobre h2 {
-    margin: 14px 0 18px;
+    padding: 10px 19px;
 
-    color: var(--cor-primaria-escura);
+    border: none;
+    border-radius: 10px;
 
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-    line-height: 1.2;
-}
+    background: var(--verde);
 
-.sobre p {
-    margin-bottom: 14px;
-    color: var(--texto-claro);
-}
+    color: var(--branco);
 
-.sobre-imagem img {
-    width: 100%;
-    height: 330px;
+    font-weight: 700;
 
-    object-fit: cover;
-
-    border-radius: var(--raio);
-    box-shadow: var(--sombra);
-}
-
-
-/* ==============================
-   DESTAQUES
-   ============================== */
-
-.destaques {
-    max-width: var(--largura);
-
-    padding: 80px 0;
-}
-
-.section-titulo {
-    margin-bottom: 35px;
-}
-
-.section-titulo h2 {
-    margin-top: 14px;
-
-    color: var(--cor-primaria-escura);
-
-    font-size: clamp(1.8rem, 3vw, 2.5rem);
-}
-
-
-/* ==============================
-   CARDS
-   ============================== */
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-}
-
-.card {
-    background: var(--branco);
-
-    border: 1px solid var(--borda);
-    border-radius: var(--raio);
-
-    padding: 30px;
-
-    box-shadow: var(--sombra);
+    cursor: pointer;
 
     transition:
+        background 0.2s ease,
         transform 0.2s ease,
         box-shadow 0.2s ease;
 }
 
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 28px rgba(36, 82, 60, 0.14);
+
+.btn:hover,
+.botao:hover {
+    background: var(--verde-escuro);
+
+    transform: translateY(-2px);
+
+    box-shadow: var(--sombra);
 }
 
+
+.btn-primario {
+    background: var(--verde);
+}
+
+
+.btn-secundario {
+    background: var(--laranja);
+}
+
+
+.btn-secundario:hover {
+    background: #B96D25;
+}
+
+
+.btn-claro {
+    background: var(--branco);
+
+    color: var(--verde-escuro);
+}
+
+
+.btn-claro:hover {
+    background: var(--verde-claro);
+
+    color: var(--verde-escuro);
+}
+
+
+.botao:disabled {
+    opacity: 0.55;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+}
+
+
+/* ==================================================
+   11. TÍTULO DE SEÇÃO
+   ================================================== */
+
+.secao-titulo,
+.section-titulo {
+    margin-bottom: 30px;
+
+    text-align: center;
+}
+
+
+.secao-titulo p,
+.section-titulo p {
+    max-width: 680px;
+
+    margin: 0 auto;
+}
+
+
+/* ==================================================
+   12. SOBRE
+   ================================================== */
+
+.sobre {
+    padding: 55px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 40px;
+
+    align-items: center;
+
+    background: var(--fundo-verde);
+
+    border-radius: var(--raio);
+}
+
+
+.sobre-conteudo {
+    display: grid;
+
+    grid-template-columns: 1.2fr 0.8fr;
+
+    gap: 40px;
+
+    align-items: center;
+}
+
+
+.sobre-imagem img {
+    width: 100%;
+    max-width: 500px;
+
+    height: 300px;
+
+    object-fit: cover;
+
+    border-radius: var(--raio);
+
+    box-shadow: var(--sombra);
+}
+
+
+.sobre-card {
+    padding: 28px;
+
+    background: var(--branco);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--raio);
+
+    box-shadow: var(--sombra);
+}
+
+
 .icone {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    margin-bottom: 18px;
+    margin-bottom: 15px;
 
-    background: var(--cor-primaria-clara);
+    background: var(--verde-claro);
 
-    border-radius: 50%;
+    border-radius: 12px;
 
-    font-size: 1.5rem;
-}
+    color: var(--verde-escuro);
 
-.card h3 {
-    margin-bottom: 10px;
-
-    color: var(--cor-primaria-escura);
-}
-
-.card p {
-    color: var(--texto-claro);
+    font-size: 1.3rem;
 }
 
 
-/* ==============================
-   CTA
-   ============================== */
+/* ==================================================
+   13. DESTAQUES
+   ================================================== */
 
-.cta {
-    max-width: var(--largura);
-
-    margin-top: 30px;
-    margin-bottom: 70px;
-
-    padding: 45px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 30px;
-
-    background: var(--cor-primaria);
-
-    border-radius: var(--raio);
-
-    color: var(--branco);
-}
-
-.cta .tag {
-    background: rgba(255, 255, 255, 0.16);
-    color: var(--branco);
-}
-
-.cta h2 {
-    margin: 14px 0 10px;
-
-    font-size: clamp(1.7rem, 3vw, 2.3rem);
-}
-
-.cta p {
-    max-width: 620px;
-    opacity: 0.9;
+.destaques {
+    padding-top: 55px;
 }
 
 
-/* ==============================
-   CABEÇALHO DAS PÁGINAS
-   ============================== */
-
-.pagina-cabecalho {
-    max-width: var(--largura);
-
-    padding: 65px 0 45px;
-}
-
-.pagina-cabecalho h2 {
-    margin: 15px 0;
-
-    color: var(--cor-primaria-escura);
-
-    font-size: clamp(2rem, 4vw, 3rem);
-    line-height: 1.15;
-}
-
-.pagina-cabecalho p {
-    max-width: 650px;
-
-    color: var(--texto-claro);
-    font-size: 1.05rem;
-}
-
-
-/* ==============================
-   PROJETOS
-   ============================== */
-
-.projetos-lista {
-    max-width: var(--largura);
-
+.projetos-grid,
+.cards {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
 
-    gap: 25px;
-
-    padding-bottom: 80px;
+    gap: 22px;
 }
+
 
 .projeto-card {
     overflow: hidden;
@@ -474,265 +622,659 @@ nav a:focus {
     background: var(--branco);
 
     border: 1px solid var(--borda);
+
     border-radius: var(--raio);
 
     box-shadow: var(--sombra);
+
+    transition: transform 0.2s ease;
 }
 
-.projeto-card > img {
+
+.projeto-card:hover {
+    transform: translateY(-4px);
+}
+
+
+.projeto-card img {
     width: 100%;
-    height: 230px;
+    height: 190px;
 
     object-fit: cover;
 }
 
+
+.projeto-card-conteudo,
 .projeto-conteudo {
-    padding: 25px;
-}
-
-.projeto-conteudo h3 {
-    margin: 14px 0 10px;
-
-    color: var(--cor-primaria-escura);
-
-    font-size: 1.3rem;
-}
-
-.projeto-conteudo p {
-    color: var(--texto-claro);
+    padding: 22px;
 }
 
 
-/* ==============================
-   FORMULÁRIO
-   ============================== */
-
-.formulario-area {
-    max-width: 760px;
-
-    margin-bottom: 80px;
-}
-
-#form-cadastro {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    gap: 22px;
-
-    padding: 35px;
+.card {
+    padding: 24px;
 
     background: var(--branco);
 
     border: 1px solid var(--borda);
+
     border-radius: var(--raio);
 
     box-shadow: var(--sombra);
 }
 
+
+.card .botao,
+.card .link-acao {
+    margin-top: 18px;
+}
+
+
+.link,
+.link-acao {
+    display: inline-block;
+
+    margin-top: 14px;
+
+    color: var(--verde);
+
+    font-weight: 700;
+}
+
+
+.link:hover,
+.link-acao:hover {
+    text-decoration: underline;
+}
+
+
+/* ==================================================
+   14. CTA
+   ================================================== */
+
+.cta {
+    margin: 55px 0;
+
+    padding: 45px 30px;
+
+    text-align: center;
+
+    background: var(--verde-claro);
+
+    border-radius: var(--raio);
+}
+
+
+.cta p {
+    max-width: 650px;
+
+    margin: 0 auto 22px;
+}
+
+
+/* ==================================================
+   15. CABEÇALHO DE PÁGINA
+   ================================================== */
+
+.pagina-cabecalho {
+    padding: 55px 0 30px;
+
+    text-align: center;
+}
+
+
+.pagina-cabecalho p {
+    max-width: 700px;
+
+    margin: 0 auto;
+}
+
+
+/* ==================================================
+   16. PROJETOS
+   ================================================== */
+
+.projetos-lista {
+    display: grid;
+
+    gap: 22px;
+}
+
+
+.projeto-detalhado {
+    display: grid;
+
+    grid-template-columns: 70px 1fr;
+
+    gap: 22px;
+
+    padding: 25px;
+
+    background: var(--branco);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--raio);
+
+    box-shadow: var(--sombra);
+}
+
+
+.numero {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--verde);
+
+    color: var(--branco);
+
+    font-weight: 700;
+}
+
+
+/* ==================================================
+   17. BADGE
+   ================================================== */
+
+.badge {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    background: var(--verde-claro);
+
+    color: var(--verde-escuro);
+
+    font-size: 0.76rem;
+
+    font-weight: 700;
+}
+
+
+/* ==================================================
+   18. FORMULÁRIO
+   ================================================== */
+
+.cadastro,
+.formulario-area {
+    max-width: 850px;
+
+    margin: 0 auto;
+}
+
+
+#form-cadastro {
+    display: grid;
+
+    gap: 18px;
+
+    margin-top: 25px;
+
+    padding: 28px;
+
+    background: var(--branco);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--raio);
+
+    box-shadow: var(--sombra);
+}
+
+
+.formulario {
+    max-width: 850px;
+
+    margin: 25px auto;
+
+    padding: 28px;
+
+    background: var(--branco);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--raio);
+
+    box-shadow: var(--sombra);
+}
+
+
+fieldset {
+    margin-bottom: 22px;
+
+    padding: 20px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 12px;
+}
+
+
+legend {
+    padding: 0 8px;
+
+    color: var(--verde-escuro);
+
+    font-weight: 700;
+}
+
+
 .campo {
     display: flex;
+
     flex-direction: column;
-    gap: 7px;
+
+    gap: 6px;
+
+    margin-bottom: 17px;
 }
+
+
+.campo:last-child {
+    margin-bottom: 0;
+}
+
 
 .campo label {
     color: var(--texto);
+
     font-weight: 700;
 }
+
 
 .campo input,
 .campo select,
 .campo textarea {
     width: 100%;
 
-    padding: 12px 14px;
-
-    background: var(--branco);
+    padding: 11px 13px;
 
     border: 1px solid var(--borda);
+
     border-radius: 9px;
+
+    background: var(--branco);
 
     color: var(--texto);
 
     outline: none;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
 }
+
 
 .campo input:focus,
 .campo select:focus,
 .campo textarea:focus {
-    border-color: var(--cor-primaria);
+    border-color: var(--verde);
 
-    box-shadow:
-        0 0 0 3px rgba(47, 107, 79, 0.12);
-}
-
-.campo textarea {
-    min-height: 130px;
-    resize: vertical;
-}
-
-#form-cadastro .campo:nth-child(5) {
-    grid-column: 1 / -1;
-}
-
-#form-cadastro button {
-    justify-self: start;
+    box-shadow: 0 0 0 3px var(--verde-claro);
 }
 
 
-/* ==============================
-   FOOTER
-   ============================== */
+/* ==================================================
+   19. ALERTAS
+   ================================================== */
+
+.alerta {
+    margin: 22px 0;
+
+    padding: 15px 18px;
+
+    border-radius: 11px;
+
+    border: 1px solid transparent;
+}
+
+
+.alerta strong {
+    display: block;
+
+    margin-bottom: 2px;
+}
+
+
+.alerta-sucesso {
+    background: var(--sucesso);
+
+    border-color: #B9DEC4;
+
+    color: var(--verde);
+}
+
+
+.alerta-erro {
+    background: var(--erro);
+
+    border-color: #F1C0BE;
+
+    color: #A94442;
+}
+
+
+/* ==================================================
+   20. MODAL
+   ================================================== */
+
+.modal-toggle {
+    display: none;
+}
+
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    background: rgba(0, 0, 0, 0.55);
+
+    z-index: 500;
+}
+
+
+.modal-toggle:checked ~ .modal {
+    display: flex;
+}
+
+
+.modal-conteudo {
+    width: min(100%, 500px);
+
+    padding: 30px;
+
+    background: var(--branco);
+
+    border-radius: var(--raio);
+
+    box-shadow: var(--sombra);
+
+    text-align: center;
+}
+
+
+.modal-conteudo .botao {
+    margin-top: 18px;
+}
+
+
+/* ==================================================
+   21. TOAST
+   ================================================== */
+
+.toast {
+    position: fixed;
+
+    right: 20px;
+    bottom: 20px;
+
+    max-width: 340px;
+
+    padding: 13px 17px;
+
+    background: var(--verde-escuro);
+
+    color: var(--branco);
+
+    border-radius: 10px;
+
+    box-shadow: var(--sombra);
+
+    z-index: 300;
+}
+
+
+/* ==================================================
+   22. RODAPÉ
+   ================================================== */
 
 footer {
-    margin-top: auto;
+    margin-top: 55px;
 
-    padding: 28px 30px;
+    padding: 28px 5%;
 
-    background: var(--cor-primaria-escura);
+    background: var(--verde-escuro);
 
     color: var(--branco);
 
     text-align: center;
 }
 
+
 footer p {
-    max-width: var(--largura);
+    color: rgba(255, 255, 255, 0.85);
 }
 
 
-/* ==============================
-   RESPONSIVIDADE
-   ============================== */
+/* ==================================================
+   23. TABLET
+   ================================================== */
 
 @media (max-width: 900px) {
 
-    header {
-        padding: 16px 22px;
-    }
-
-    .hero,
-    .sobre {
+    .hero {
         grid-template-columns: 1fr;
 
-        padding-left: 25px;
-        padding-right: 25px;
+        gap: 30px;
     }
 
-    .hero {
-        padding-top: 45px;
-    }
 
     .hero-conteudo {
-        max-width: 100%;
+        max-width: 700px;
     }
+
 
     .hero-imagem {
         justify-content: center;
     }
 
+
     .hero-imagem img {
         max-width: 650px;
-        height: 300px;
+
+        height: 320px;
     }
+
 
     .sobre {
-        gap: 30px;
+        grid-template-columns: 1fr;
     }
 
-    .cards,
-    .projetos-lista {
-        grid-template-columns: 1fr 1fr;
 
-        padding-left: 25px;
-        padding-right: 25px;
+    .sobre-conteudo {
+        grid-template-columns: 1fr;
     }
 
-    .destaques,
-    .pagina-cabecalho {
-        padding-left: 25px;
-        padding-right: 25px;
+
+    .projetos-grid,
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .cta {
-        margin-left: 25px;
-        margin-right: 25px;
-    }
 }
 
 
-@media (max-width: 650px) {
+/* ==================================================
+   24. MENU MOBILE
+   ================================================== */
+
+@media (max-width: 850px) {
 
     header {
-        flex-direction: column;
-        align-items: flex-start;
+        position: sticky;
+
+        flex-wrap: wrap;
     }
 
-    nav {
-        width: 100%;
+
+    .menu-icon {
+        display: block;
     }
+
+
+    header nav {
+        display: none;
+
+        width: 100%;
+
+        margin-top: 15px;
+    }
+
+
+    .menu-toggle:checked ~ nav {
+        display: block;
+    }
+
 
     nav ul {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 4px;
+
+        width: 100%;
+    }
+
+
+    nav li {
+        width: 100%;
+    }
+
+
+    nav a {
+        display: block;
+
         width: 100%;
 
-        justify-content: space-between;
+        padding: 10px 12px;
 
-        gap: 12px;
+        border-radius: 8px;
     }
+
+
+    nav a:hover {
+        background: var(--verde-claro);
+    }
+
+
+    nav a::after {
+        display: none;
+    }
+
+}
+
+
+/* ==================================================
+   25. CELULAR
+   ================================================== */
+
+@media (max-width: 600px) {
+
+    main {
+        width: min(92%, var(--largura));
+    }
+
+
+    header {
+        padding: 12px 18px;
+    }
+
+
+    .logo-area {
+        gap: 8px;
+    }
+
+
+    .logo-area h1 {
+        font-size: 1.05rem;
+    }
+
+
+    .logo-area img {
+        width: 42px;
+        height: 42px;
+    }
+
+
+    section {
+        padding: 40px 0;
+    }
+
 
     .hero {
-        padding-top: 35px;
-        padding-bottom: 50px;
+        min-height: auto;
+
+        padding: 40px 0;
     }
+
 
     .hero h2 {
         font-size: 2rem;
     }
 
+
     .hero-imagem img {
-        height: 240px;
+        height: 260px;
     }
 
-    .sobre {
-        padding-top: 55px;
-        padding-bottom: 55px;
+
+    .projetos-grid,
+    .cards {
+        grid-template-columns: 1fr;
     }
+
+
+    .sobre {
+        padding: 30px 20px;
+    }
+
 
     .sobre-imagem img {
         height: 240px;
     }
 
-    .cards,
-    .projetos-lista {
+
+    .projeto-detalhado {
         grid-template-columns: 1fr;
     }
+
 
     .cta {
-        flex-direction: column;
-        align-items: flex-start;
-
-        padding: 30px;
-
-        margin-left: 20px;
-        margin-right: 20px;
+        padding: 35px 20px;
     }
+
 
     #form-cadastro {
-        grid-template-columns: 1fr;
-
-        padding: 25px;
+        padding: 20px;
     }
 
-    #form-cadastro .campo:nth-child(5) {
-        grid-column: auto;
+
+    .formulario {
+        padding: 20px;
     }
 
-    .formulario-area {
-        padding-left: 20px;
-        padding-right: 20px;
+
+    .toast {
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
+
+        max-width: none;
     }
+
 }
+

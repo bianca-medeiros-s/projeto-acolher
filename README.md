@@ -1,6 +1,6 @@
 # Projeto Acolher
 
-Projeto front-end desenvolvido para uma organização não governamental (ONG), com o objetivo de apresentar projetos sociais e disponibilizar um formulário de cadastro.
+Projeto front-end desenvolvido para uma organização não governamental (ONG), com o objetivo de apresentar projetos sociais, incentivar a participação voluntária e disponibilizar um formulário de cadastro.
 
 ## Tecnologias utilizadas
 
@@ -9,7 +9,8 @@ Projeto front-end desenvolvido para uma organização não governamental (ONG), 
 * JavaScript
 * Git
 * GitHub
-* Live Server
+* Vite
+* SweetAlert2
 
 ## Estrutura do projeto
 
@@ -18,88 +19,138 @@ projeto-acolher/
 ├── html/
 │   ├── index.html
 │   ├── cadastro.html
-│   └── projetos.html
+│   ├── projetos.html
+│   ├── package.json
+│   ├── package-lock.json
+│   └── vite.config.mjs
+│
 ├── css/
 │   └── style.css
+│
 ├── imagens/
 │   ├── logo.png
 │   ├── doacao.jpg
 │   ├── voluntarios.jpg
 │   └── projetos.webp
+│
 ├── js/
 │   ├── app.js
 │   ├── router.js
 │   └── templates.js
+│
+├── .gitignore
 └── README.md
 ```
 
 ## Funcionalidades
 
+* Página inicial institucional;
+* Apresentação do Projeto Acolher;
+* Apresentação das ações e projetos sociais;
 * Navegação entre as páginas;
-* Apresentação dos projetos da ONG;
-* Formulário de cadastro;
-* Validação dos dados;
-* Armazenamento das informações utilizando `localStorage`;
-* Navegação dinâmica utilizando JavaScript;
-* Organização do código em módulos ES6.
+* Página de cadastro de voluntários;
+* Validação básica dos campos obrigatórios do formulário;
+* Mensagem de confirmação após o envio do cadastro;
+* Layout responsivo para computadores, tablets e celulares;
+* Menu de navegação adaptado para dispositivos móveis;
+* Utilização de imagens e elementos visuais para apresentação dos projetos;
+* Organização dos arquivos por responsabilidade.
 
-## Pré-requisitos
+## Formulário de cadastro
 
-Para executar o projeto localmente, são necessários:
+A página de cadastro permite que o usuário informe:
 
-* Visual Studio Code;
-* Git;
-* Extensão Live Server para o Visual Studio Code;
-* Navegador web atualizado.
+* Nome completo;
+* E-mail;
+* Telefone;
+* Área de interesse;
+* Mensagem.
 
-## Instalação e execução local
+Após o preenchimento e envio do formulário, uma mensagem de confirmação é apresentada utilizando a biblioteca SweetAlert2.
 
-1. Clone o repositório do Projeto Acolher:
+O formulário possui validação nativa do HTML5 por meio dos atributos `required` e dos tipos de campo apropriados, como `email`.
+
+## Responsividade
+
+O projeto utiliza CSS3 com media queries para adaptar a interface a diferentes tamanhos de tela.
+
+Foram consideradas três situações principais:
+
+* Computadores e telas maiores;
+* Tablets;
+* Dispositivos móveis.
+
+O menu de navegação também possui comportamento específico para telas menores.
+
+## Vite
+
+O projeto utiliza o Vite como ferramenta de desenvolvimento e construção da aplicação.
+
+Os comandos principais estão definidos no arquivo `package.json`:
 
 ```bash
-git clone https://github.com/bianca-medeiros-s/projeto-acolher.git
+npm run dev
+npm run build
+npm run preview
 ```
 
-2. Acesse a pasta do projeto:
+### Executar o projeto em ambiente de desenvolvimento
+
+Dentro da pasta `html`, execute:
 
 ```bash
-cd projeto-acolher
+npm install
 ```
 
-3. Abra a pasta no Visual Studio Code.
+Depois:
 
-4. Instale ou verifique a extensão **Live Server** no Visual Studio Code.
+```bash
+npm run dev
+```
 
-5. Abra o arquivo `html/index.html`.
+O Vite iniciará um servidor local para visualização do projeto durante o desenvolvimento.
 
-6. Clique com o botão direito no arquivo e selecione **Open with Live Server**.
+### Gerar a versão de produção
 
-7. O projeto será aberto no navegador por meio de um servidor local.
+Para gerar os arquivos destinados à publicação:
 
-O uso do Live Server é necessário porque o projeto utiliza módulos JavaScript com `import` e `export`. A abertura direta do arquivo pelo protocolo `file://` pode impedir o carregamento desses módulos.
+```bash
+npm run build
+```
+
+Os arquivos de produção são gerados na pasta:
+
+```text
+dist/
+```
+
+A pasta `dist/` é gerada automaticamente durante o processo de build e não faz parte do código-fonte principal versionado.
 
 ## Versionamento
 
 O projeto utiliza Git para controle de versões e GitHub para hospedagem do repositório.
 
-Foi utilizada uma estrutura baseada no GitFlow, com as seguintes branches:
+Foi utilizada uma organização baseada em branches para separar o desenvolvimento e as alterações relacionadas à etapa de versionamento.
 
-* `main`: versão estável do projeto;
+Branches utilizadas no projeto:
+
+* `main`: branch principal do projeto;
 * `develop`: branch destinada ao desenvolvimento;
-* `feature/versionamento`: branch utilizada para as alterações específicas desta etapa.
+* `feature/versionamento`: branch utilizada para as alterações relacionadas à etapa de versionamento e preparação para publicação.
 
-## Commits semânticos
+## Commits
 
-Foram utilizados commits semânticos para identificar de forma clara o objetivo de cada alteração.
+Foram utilizados commits semânticos para identificar de forma clara o objetivo das alterações realizadas.
 
-Exemplos utilizados no projeto:
+Exemplos:
 
 ```text
 chore: inicializa projeto acolher
 docs: adiciona documentação do projeto
+feat: prepara projeto para deploy
 ```
 
-## Releases
+## Release
 
 Foi criada a tag:
 
@@ -107,18 +158,68 @@ Foi criada a tag:
 v1.0.0
 ```
 
-A tag representa a versão inicial registrada do projeto.
+A tag representa uma versão registrada do projeto.
 
-## GitHub e Pull Requests
+## GitHub
 
-O repositório está hospedado no GitHub.
+O repositório do Projeto Acolher está disponível em:
 
-As alterações desenvolvidas na branch `feature/versionamento` foram submetidas por meio de um Pull Request para a branch `develop`.
+https://github.com/bianca-medeiros-s/projeto-acolher
 
-O Pull Request **#1**, denominado `docs: adiciona documentação do projeto`, foi utilizado para revisar a inclusão do `README.md` antes da integração das alterações.
+A versão final utilizada na etapa de preparação para deploy está registrada no commit:
+
+```text
+34515fb63395ae3dadae5567c6c168207738b946
+```
+
+Mensagem do commit:
+
+```text
+feat: prepara projeto para deploy
+```
+
+## Pull Requests
+
+As alterações relacionadas à documentação foram organizadas por meio de Pull Request no GitHub.
+
+O Pull Request #1, denominado:
+
+```text
+docs: adiciona documentação do projeto
+```
+
+foi utilizado para revisar a inclusão da documentação antes da integração das alterações.
 
 ## Issues e Milestones
 
-Foi criada a Issue **“Implementação do versionamento e documentação”** para organizar as atividades desta etapa.
+Foi criada a Issue:
 
-Também foi criada a Milestone **“EP IV - Versionamento e documentação”**, utilizada para agrupar e acompanhar as atividades relacionadas ao versionamento e à documentação do projeto.
+```text
+Implementação do versionamento e documentação
+```
+
+para organizar as atividades relacionadas ao versionamento e à documentação do projeto.
+
+Também foi criada a Milestone:
+
+```text
+EP IV - Versionamento e documentação
+```
+
+utilizada para agrupar e acompanhar as atividades dessa etapa.
+
+## Deploy
+
+O projeto foi preparado para publicação utilizando o Vite.
+
+A configuração de build encontra-se no arquivo:
+
+```text
+html/vite.config.mjs
+```
+
+A configuração define as páginas HTML utilizadas na aplicação e o diretório de saída dos arquivos gerados para produção.
+
+## Autor
+
+Projeto desenvolvido como parte das atividades acadêmicas do curso de Análise e Desenvolvimento de Sistemas.

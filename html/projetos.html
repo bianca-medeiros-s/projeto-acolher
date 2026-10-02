@@ -1,9 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
     <meta
         name="description"
@@ -12,61 +18,236 @@
 
     <title>Projetos | Projeto Acolher</title>
 
-    <link rel="stylesheet" href="../css/style.css">
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
 </head>
+
 
 <body>
 
     <header>
+
         <div class="logo-area">
-            <a href="index.html" aria-label="Voltar para a página inicial">
+
+            <a
+                href="index.html"
+                aria-label="Página inicial do Projeto Acolher"
+            >
+
                 <img
                     src="../imagens/logo.png"
                     alt="Logo do Projeto Acolher"
                 >
+
             </a>
 
-            <h1>Projeto Acolher</h1>
+            <h1>
+                Projeto Acolher
+            </h1>
+
         </div>
 
+
+        <input
+            type="checkbox"
+            id="menu-toggle"
+            class="menu-toggle"
+        >
+
+
+        <label
+            for="menu-toggle"
+            class="menu-icon"
+            aria-label="Abrir menu"
+        >
+            ☰
+        </label>
+
+
         <nav aria-label="Navegação principal">
+
             <ul>
+
                 <li>
-                    <a href="index.html#inicio" data-rota="inicio">
+                    <a href="index.html">
                         Início
                     </a>
                 </li>
 
                 <li>
-                    <a href="projetos.html" data-rota="projetos">
+                    <a href="projetos.html">
                         Projetos
                     </a>
                 </li>
 
                 <li>
-                    <a href="cadastro.html" data-rota="cadastro">
+                    <a href="cadastro.html">
                         Cadastro
                     </a>
                 </li>
+
             </ul>
+
         </nav>
+
     </header>
 
-    <main id="app" aria-live="polite"></main>
+
+    <main>
+
+
+        <section class="pagina-cabecalho">
+
+            <span class="tag">
+                Nossos projetos
+            </span>
+
+            <h2>
+                Conheça nossas iniciativas
+            </h2>
+
+            <p>
+                Ações pensadas para fortalecer a solidariedade
+                e promover mudanças positivas na comunidade.
+            </p>
+
+        </section>
+
+
+        <section class="projetos-lista">
+
+
+            <article class="projeto-card">
+
+                <img
+                    src="../imagens/projetos.webp"
+                    alt="Ação social do Projeto Acolher"
+                >
+
+                <div class="projeto-conteudo">
+
+                    <span class="tag">
+                        Ação social
+                    </span>
+
+                    <h3>
+                        Projetos comunitários
+                    </h3>
+
+                    <p>
+                        Desenvolvemos iniciativas voltadas ao apoio
+                        de pessoas e comunidades em situação de
+                        vulnerabilidade.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="projeto-card">
+
+                <img
+                    src="../imagens/doacao.jpg"
+                    alt="Doação realizada pelo Projeto Acolher"
+                >
+
+                <div class="projeto-conteudo">
+
+                    <span class="tag">
+                        Solidariedade
+                    </span>
+
+                    <h3>
+                        Campanhas de doação
+                    </h3>
+
+                    <p>
+                        Arrecadamos recursos e itens essenciais para
+                        apoiar famílias e instituições.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="projeto-card">
+
+                <img
+                    src="../imagens/voluntarios.jpg"
+                    alt="Grupo de voluntários"
+                >
+
+                <div class="projeto-conteudo">
+
+                    <span class="tag">
+                        Voluntariado
+                    </span>
+
+                    <h3>
+                        Rede de voluntários
+                    </h3>
+
+                    <p>
+                        Pessoas interessadas podem contribuir com
+                        tempo, conhecimento e habilidades.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+        <section class="cta">
+
+            <div>
+
+                <span class="tag">
+                    Participe
+                </span>
+
+                <h2>
+                    Quer fazer parte do projeto?
+                </h2>
+
+                <p>
+                    Cadastre-se para demonstrar seu interesse
+                    em participar das nossas ações.
+                </p>
+
+            </div>
+
+
+            <a
+                href="cadastro.html"
+                class="btn btn-claro"
+            >
+                Fazer cadastro
+            </a>
+
+        </section>
+
+
+    </main>
+
 
     <footer>
+
         <p>
-            &copy; 2026 Projeto Acolher. Todos os direitos reservados.
+            &copy; 2026 Projeto Acolher.
+            Todos os direitos reservados.
         </p>
+
     </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script
-        type="module"
-        src="../js/app.js">
-    </script>
 
 </body>
 
 </html>
+

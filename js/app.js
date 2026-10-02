@@ -33,7 +33,6 @@ const paginas = {
 
             </div>
 
-
             <div class="hero-imagem">
 
                 <img
@@ -101,7 +100,6 @@ const paginas = {
 
             <div class="cards">
 
-
                 <article class="card">
 
                     <div class="icone">
@@ -154,7 +152,6 @@ const paginas = {
                     </p>
 
                 </article>
-
 
             </div>
 
@@ -215,7 +212,6 @@ const paginas = {
 
 
         <section class="projetos-lista">
-
 
             <article class="projeto-card">
 
@@ -297,7 +293,6 @@ const paginas = {
 
             </article>
 
-
         </section>
 
     `,
@@ -326,7 +321,6 @@ const paginas = {
         <section class="formulario-area">
 
             <form id="form-cadastro">
-
 
                 <div class="campo">
 
@@ -435,14 +429,12 @@ const paginas = {
                     Enviar cadastro
                 </button>
 
-
             </form>
 
         </section>
 
     `
 };
-
 
 
 function carregarPagina(pagina) {
@@ -458,9 +450,7 @@ function carregarPagina(pagina) {
     });
 
     ativarFormulario();
-
 }
-
 
 
 function obterRotaAtual() {
@@ -469,9 +459,7 @@ function obterRotaAtual() {
         window.location.hash.replace("#", "")
         || "inicio"
     );
-
 }
-
 
 
 function ativarNavegacao() {
@@ -482,101 +470,5 @@ function ativarNavegacao() {
             evento.target.closest("[data-rota]");
 
         if (!link) {
-            return;
-        }
-
-        evento.preventDefault();
-
-        const rota =
-            link.dataset.rota;
-
-        window.location.hash =
-            rota;
-
-        carregarPagina(rota);
-
-    });
-
-}
-
-
-
-function ativarFormulario() {
-
-    const formulario =
-        document.querySelector("#form-cadastro");
-
-    if (!formulario) {
-        return;
-    }
-
-
-    formulario.addEventListener("submit", (evento) => {
-
-        evento.preventDefault();
-
-
-        const nome =
-            document.querySelector("#nome")
-            .value
-            .trim();
-
-
-        if (typeof Swal !== "undefined") {
-
-            Swal.fire({
-
-                title: "Cadastro enviado!",
-
-                text:
-                    `Obrigado, ${nome}! Seu interesse em participar foi registrado.`,
-
-                icon: "success",
-
-                confirmButtonText: "Continuar"
-
-            });
-
-        } else {
-
-            alert(
-                `Obrigado, ${nome}! Seu cadastro foi enviado.`
-            );
-
-        }
-
-
-        formulario.reset();
-
-    });
-
-}
-
-
-
-function iniciarAplicacao() {
-
-    carregarPagina(
-        obterRotaAtual()
-    );
-
-    ativarNavegacao();
-
-}
-
-
-
-window.addEventListener(
-    "hashchange",
-    () => {
-
-        carregarPagina(
-            obterRotaAtual()
-        );
-
-    }
-);
-
-
-iniciarAplicacao();
+            re
 
