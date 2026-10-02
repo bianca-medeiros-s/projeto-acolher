@@ -1,1 +1,582 @@
-const app = document.querySelector("#app"); const paginas = { /* ===================================================== PÁGINA INICIAL ===================================================== */ inicio: ` <section class="hero" id="inicio"> <div class="hero-conteudo"> <span class="tag"> PROJETO ACOLHER </span> <h2> Juntos podemos transformar pequenas ações em grandes mudanças. </h2> <p> Conheça nossas ações e descubra como participar dos projetos desenvolvidos pelo Projeto Acolher. </p> <a href="#projetos" class="botao" data-rota="projetos" > Conheça nossos projetos </a> </div> <div class="hero-imagem"> <img src="../imagens/voluntarios.jpg" alt="Pessoas participando de uma ação voluntária" > </div> </section> <section class="sobre"> <span class="tag"> SOBRE NÓS </span> <h2> Construindo uma comunidade mais acolhedora </h2> <p> O Projeto Acolher desenvolve ações sociais voltadas para pessoas e comunidades que precisam de apoio. </p> <div class="cards"> <article class="card"> <span class="badge"> 🤝 Solidariedade </span> <h3> Solidariedade </h3> <p> Promovemos iniciativas que aproximam pessoas e fortalecem a comunidade. </p> </article> <article class="card"> <span class="badge"> 💚 Inclusão </span> <h3> Inclusão </h3> <p> Trabalhamos para criar oportunidades de participação para todos. </p> </article> <article class="card"> <span class="badge"> 🌱 Transformação </span> <h3> Transformação </h3> <p> Pequenas atitudes podem gerar impactos positivos e duradouros. </p> </article> </div> </section> <section class="projetos"> <span class="tag"> NOSSAS AÇÕES </span> <h2> Faça parte dessa transformação </h2> <p> Conheça algumas das formas de participar das ações do Projeto Acolher. </p> <div class="cards"> <article class="card"> <img src="../imagens/doacao.jpg" alt="Doações destinadas a ações sociais" > <h3> Campanhas de doação </h3> <p> Contribua com doações e ajude a levar recursos para pessoas que precisam. </p> <a href="#projetos" data-rota="projetos" class="botao" > Saiba mais </a> </article> <article class="card"> <img src="../imagens/voluntarios.jpg" alt="Voluntários participando de uma ação" > <h3> Voluntariado </h3> <p> Doe seu tempo e suas habilidades participando das nossas ações. </p> <a href="#projetos" data-rota="projetos" class="botao" > Quero participar </a> </article> </div> </section> <section class="sobre"> <span class="tag"> PARTICIPE </span> <h2> Sua participação pode fazer a diferença. </h2> <p> Cadastre-se para conhecer as oportunidades de participação no Projeto Acolher. </p> <a href="#cadastro" data-rota="cadastro" class="botao" > Quero participar </a> </section> `, /* ===================================================== PÁGINA DE PROJETOS ===================================================== */ projetos: ` <section> <span class="tag"> NOSSOS PROJETOS </span> <h2> Conheça nossas ações </h2> <p> Encontre diferentes formas de contribuir com o Projeto Acolher. </p> </section> <section class="projetos"> <div class="cards"> <article class="card"> <img src="../imagens/doacao.jpg" alt="Materiais destinados para doação" > <span class="badge"> 01 • DOAÇÕES </span> <h3> Campanhas de doação </h3> <p> Nossas campanhas arrecadam alimentos, roupas e outros itens essenciais para serem destinados às pessoas atendidas pelos projetos. </p> <a href="#cadastro" data-rota="cadastro" class="botao" > Quero ajudar </a> </article> <article class="card"> <img src="../imagens/voluntarios.jpg" alt="Grupo de voluntários reunidos" > <span class="badge"> 02 • VOLUNTARIADO </span> <h3> Ações voluntárias </h3> <p> Voluntários podem colaborar em campanhas, eventos e atividades comunitárias, contribuindo com tempo, conhecimento e disposição. </p> <a href="#cadastro" data-rota="cadastro" class="botao" > Quero ser voluntário </a> </article> </div> </section> `, /* ===================================================== PÁGINA DE CADASTRO ===================================================== */ cadastro: ` <section> <span class="tag"> PARTICIPE </span> <h2> Cadastre-se no Projeto Acolher </h2> <p> Preencha seus dados para demonstrar interesse em participar das nossas ações. </p> </section> <section> <form id="form-cadastro" class="formulario" > <fieldset> <legend> Dados pessoais </legend> <div class="campo"> <label for="nome"> Nome completo </label> <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required > </div> <div class="campo"> <label for="email"> E-mail </label> <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required > </div> <div class="campo"> <label for="telefone"> Telefone </label> <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" > </div> </fieldset> <fieldset> <legend> Participação </legend> <div class="campo"> <label for="interesse"> Como deseja participar? </label> <select id="interesse" name="interesse" required > <option value=""> Selecione uma opção </option> <option value="doacao"> Doações </option> <option value="voluntariado"> Voluntariado </option> <option value="ambos"> Doações e voluntariado </option> </select> </div> <div class="campo"> <label for="mensagem"> Mensagem </label> <textarea id="mensagem" name="mensagem" rows="5" placeholder="Conte um pouco sobre como gostaria de participar" ></textarea> </div> </fieldset> <button type="submit" class="botao" > Enviar cadastro </button> </form> </section> ` }; /* ========================================================= CARREGAR PÁGINA ========================================================= */ function carregarPagina(pagina) { const paginaSelecionada = paginas[pagina] || paginas.inicio; app.innerHTML = paginaSelecionada; window.scrollTo({ top: 0, behavior: "smooth" }); ativarFormulario(); } /* ========================================================= ROTA ATUAL ========================================================= */ function obterRotaAtual() { return ( window.location.hash.replace("#", "") || "inicio" ); } /* ========================================================= NAVEGAÇÃO ========================================================= */ function ativarNavegacao() { document.addEventListener("click", (evento) => { const link = evento.target.closest("[data-rota]"); if (!link) { return; } evento.preventDefault(); const rota = link.dataset.rota; window.location.hash = rota; }); } /* ========================================================= FORMULÁRIO ========================================================= */ function ativarFormulario() { const formulario = document.querySelector("#form-cadastro"); if (!formulario) { return; } formulario.addEventListener( "submit", (evento) => { evento.preventDefault(); const nome = document .querySelector("#nome") .value .trim(); if (typeof Swal !== "undefined") { Swal.fire({ title: "Cadastro enviado!", text: `Obrigado, ${nome}! Seu interesse em participar foi registrado.`, icon: "success", confirmButtonText: "Continuar" }); } else { alert( `Obrigado, ${nome}! Seu cadastro foi enviado.` ); } formulario.reset(); } ); } /* ========================================================= INICIALIZAÇÃO ========================================================= */ function iniciarAplicacao() { carregarPagina( obterRotaAtual() ); ativarNavegacao(); } window.addEventListener( "hashchange", () => { carregarPagina( obterRotaAtual() ); } ); iniciarAplicacao();
+
+const app = document.querySelector("#app");
+
+
+const paginas = {
+
+    inicio: `
+
+        <section class="hero">
+
+            <div class="hero-conteudo">
+
+                <span class="tag">
+                    Transformando vidas
+                </span>
+
+                <h2>
+                    Juntos podemos fazer a diferença.
+                </h2>
+
+                <p>
+                    O Projeto Acolher conecta pessoas, voluntários e iniciativas
+                    para construir uma comunidade mais solidária e acolhedora.
+                </p>
+
+                <a
+                    href="#cadastro"
+                    data-rota="cadastro"
+                    class="btn"
+                >
+                    Quero participar
+                </a>
+
+            </div>
+
+
+            <div class="hero-imagem">
+
+                <img
+                    src="../imagens/voluntarios.jpg"
+                    alt="Voluntários participando de uma ação social"
+                >
+
+            </div>
+
+        </section>
+
+
+        <section class="sobre">
+
+            <div>
+
+                <span class="tag">
+                    Sobre o projeto
+                </span>
+
+                <h2>
+                    Um espaço para acolher e transformar
+                </h2>
+
+                <p>
+                    O Projeto Acolher promove ações sociais e oportunidades
+                    para que pessoas possam contribuir com suas comunidades.
+                </p>
+
+                <p>
+                    Por meio da participação voluntária e da solidariedade,
+                    buscamos fortalecer vínculos e ampliar o impacto positivo
+                    das ações realizadas.
+                </p>
+
+            </div>
+
+
+            <div class="sobre-imagem">
+
+                <img
+                    src="../imagens/doacao.jpg"
+                    alt="Pessoa participando de uma ação de doação"
+                >
+
+            </div>
+
+        </section>
+
+
+        <section class="destaques">
+
+            <div class="section-titulo">
+
+                <span class="tag">
+                    Como participar
+                </span>
+
+                <h2>
+                    Faça parte dessa iniciativa
+                </h2>
+
+            </div>
+
+
+            <div class="cards">
+
+
+                <article class="card">
+
+                    <div class="icone">
+                        🤝
+                    </div>
+
+                    <h3>
+                        Seja voluntário
+                    </h3>
+
+                    <p>
+                        Doe seu tempo e suas habilidades para ajudar nas ações
+                        desenvolvidas pelo projeto.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="icone">
+                        💚
+                    </div>
+
+                    <h3>
+                        Apoie projetos
+                    </h3>
+
+                    <p>
+                        Conheça as iniciativas e contribua para que elas
+                        continuem alcançando quem precisa.
+                    </p>
+
+                </article>
+
+
+                <article class="card">
+
+                    <div class="icone">
+                        🌱
+                    </div>
+
+                    <h3>
+                        Transforme realidades
+                    </h3>
+
+                    <p>
+                        Pequenas atitudes podem gerar mudanças importantes
+                        dentro da comunidade.
+                    </p>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+
+        <section class="cta">
+
+            <div>
+
+                <span class="tag">
+                    Participe
+                </span>
+
+                <h2>
+                    Quer fazer parte do Projeto Acolher?
+                </h2>
+
+                <p>
+                    Cadastre-se e demonstre seu interesse em participar
+                    das nossas ações.
+                </p>
+
+            </div>
+
+
+            <a
+                href="#cadastro"
+                data-rota="cadastro"
+                class="btn btn-claro"
+            >
+                Fazer cadastro
+            </a>
+
+        </section>
+
+    `,
+
+
+    projetos: `
+
+        <section class="pagina-cabecalho">
+
+            <span class="tag">
+                Nossos projetos
+            </span>
+
+            <h2>
+                Conheça nossas iniciativas
+            </h2>
+
+            <p>
+                Ações pensadas para fortalecer a solidariedade e promover
+                mudanças positivas na comunidade.
+            </p>
+
+        </section>
+
+
+        <section class="projetos-lista">
+
+
+            <article class="projeto-card">
+
+                <img
+                    src="../imagens/projetos.webp"
+                    alt="Ação social do Projeto Acolher"
+                >
+
+                <div class="projeto-conteudo">
+
+                    <span class="tag">
+                        Ação social
+                    </span>
+
+                    <h3>
+                        Projetos comunitários
+                    </h3>
+
+                    <p>
+                        Desenvolvemos iniciativas voltadas ao apoio de pessoas
+                        e comunidades em situação de vulnerabilidade.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="projeto-card">
+
+                <img
+                    src="../imagens/doacao.jpg"
+                    alt="Doação realizada pelo Projeto Acolher"
+                >
+
+                <div class="projeto-conteudo">
+
+                    <span class="tag">
+                        Solidariedade
+                    </span>
+
+                    <h3>
+                        Campanhas de doação
+                    </h3>
+
+                    <p>
+                        Arrecadamos recursos e itens essenciais para apoiar
+                        famílias e instituições.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="projeto-card">
+
+                <img
+                    src="../imagens/voluntarios.jpg"
+                    alt="Grupo de voluntários"
+                >
+
+                <div class="projeto-conteudo">
+
+                    <span class="tag">
+                        Voluntariado
+                    </span>
+
+                    <h3>
+                        Rede de voluntários
+                    </h3>
+
+                    <p>
+                        Pessoas interessadas podem contribuir com tempo,
+                        conhecimento e habilidades.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+    `,
+
+
+    cadastro: `
+
+        <section class="pagina-cabecalho">
+
+            <span class="tag">
+                Participe
+            </span>
+
+            <h2>
+                Cadastro de voluntários
+            </h2>
+
+            <p>
+                Preencha seus dados para demonstrar interesse em participar
+                do Projeto Acolher.
+            </p>
+
+        </section>
+
+
+        <section class="formulario-area">
+
+            <form id="form-cadastro">
+
+
+                <div class="campo">
+
+                    <label for="nome">
+                        Nome completo
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        placeholder="Digite seu nome"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="email">
+                        E-mail
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Digite seu e-mail"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="telefone">
+                        Telefone
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="telefone"
+                        name="telefone"
+                        placeholder="Digite seu telefone"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="interesse">
+                        Área de interesse
+                    </label>
+
+                    <select
+                        id="interesse"
+                        name="interesse"
+                        required
+                    >
+
+                        <option value="">
+                            Selecione uma opção
+                        </option>
+
+                        <option value="voluntariado">
+                            Voluntariado
+                        </option>
+
+                        <option value="doacoes">
+                            Doações
+                        </option>
+
+                        <option value="projetos">
+                            Projetos sociais
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="campo">
+
+                    <label for="mensagem">
+                        Mensagem
+                    </label>
+
+                    <textarea
+                        id="mensagem"
+                        name="mensagem"
+                        rows="5"
+                        placeholder="Conte um pouco sobre como deseja participar"
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn"
+                >
+                    Enviar cadastro
+                </button>
+
+
+            </form>
+
+        </section>
+
+    `
+};
+
+
+
+function carregarPagina(pagina) {
+
+    const paginaSelecionada =
+        paginas[pagina] || paginas.inicio;
+
+    app.innerHTML = paginaSelecionada;
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+    ativarFormulario();
+
+}
+
+
+
+function obterRotaAtual() {
+
+    return (
+        window.location.hash.replace("#", "")
+        || "inicio"
+    );
+
+}
+
+
+
+function ativarNavegacao() {
+
+    document.addEventListener("click", (evento) => {
+
+        const link =
+            evento.target.closest("[data-rota]");
+
+        if (!link) {
+            return;
+        }
+
+        evento.preventDefault();
+
+        const rota =
+            link.dataset.rota;
+
+        window.location.hash =
+            rota;
+
+        carregarPagina(rota);
+
+    });
+
+}
+
+
+
+function ativarFormulario() {
+
+    const formulario =
+        document.querySelector("#form-cadastro");
+
+    if (!formulario) {
+        return;
+    }
+
+
+    formulario.addEventListener("submit", (evento) => {
+
+        evento.preventDefault();
+
+
+        const nome =
+            document.querySelector("#nome")
+            .value
+            .trim();
+
+
+        if (typeof Swal !== "undefined") {
+
+            Swal.fire({
+
+                title: "Cadastro enviado!",
+
+                text:
+                    `Obrigado, ${nome}! Seu interesse em participar foi registrado.`,
+
+                icon: "success",
+
+                confirmButtonText: "Continuar"
+
+            });
+
+        } else {
+
+            alert(
+                `Obrigado, ${nome}! Seu cadastro foi enviado.`
+            );
+
+        }
+
+
+        formulario.reset();
+
+    });
+
+}
+
+
+
+function iniciarAplicacao() {
+
+    carregarPagina(
+        obterRotaAtual()
+    );
+
+    ativarNavegacao();
+
+}
+
+
+
+window.addEventListener(
+    "hashchange",
+    () => {
+
+        carregarPagina(
+            obterRotaAtual()
+        );
+
+    }
+);
+
+
+iniciarAplicacao();
+
