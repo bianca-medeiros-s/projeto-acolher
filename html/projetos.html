@@ -1,220 +1,253 @@
 
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projetos - Projeto Acolher</title>
-    <link rel="stylesheet" href="css/style.css">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Conheça os projetos e ações sociais do Projeto Acolher."
+    >
+
+    <title>Projetos | Projeto Acolher</title>
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
 </head>
+
 
 <body>
 
-<header>
-    <div class="logo-area">
-        <img src="imagens/logo.png" alt="Logo do Projeto Acolher">
-        <h1>Projeto Acolher</h1>
-    </div>
+    <header>
 
-    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <div class="logo-area">
 
-    <label for="menu-toggle" class="menu-icon" aria-label="Abrir menu">
-        ☰
-    </label>
-
-    <nav>
-        <ul>
-            <li>
-                <a href="index.html">Início</a>
-            </li>
-
-            <li class="dropdown">
-                <a href="projetos.html">Projetos ▾</a>
-
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="#doacoes">Doações</a>
-                    </li>
-                    <li>
-                        <a href="#voluntariado">Voluntariado</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-                <a href="cadastro.html">Cadastro</a>
-            </li>
-        </ul>
-    </nav>
-</header>
-
-<main>
-
-    <section>
-        <h2>Nossos projetos</h2>
-
-        <p>
-            Conheça algumas das ações realizadas pelo Projeto Acolher
-            e veja como você pode participar.
-        </p>
-    </section>
-
-    <section>
-        <div class="alerta alerta-sucesso" role="status">
-            <strong>Projeto ativo:</strong>
-            as inscrições para participação estão abertas.
-        </div>
-    </section>
-
-    <section id="doacoes">
-        <span class="badge">Doações</span>
-
-        <h2>Projeto de Doações</h2>
-
-        <div class="cards">
-
-            <article class="card">
-                <span class="badge">Em andamento</span>
-
-                <h3>Arrecadação de alimentos</h3>
-
-                <p>
-                    A ação busca arrecadar alimentos e itens básicos
-                    para famílias em situação de vulnerabilidade.
-                </p>
-
-                <a href="cadastro.html" class="botao">
-                    Quero participar
-                </a>
-            </article>
-
-            <article class="card">
-                <span class="badge">Projeto ativo</span>
-
-                <h3>Campanha de materiais</h3>
-
-                <p>
-                    A campanha recebe materiais que possam ser utilizados
-                    em ações sociais e atividades comunitárias.
-                </p>
-
-                <a href="cadastro.html" class="link-acao">
-                    Participar da campanha
-                </a>
-            </article>
-
-        </div>
-    </section>
-
-    <section id="voluntariado">
-        <span class="badge">Voluntariado</span>
-
-        <h2>Projeto de Voluntariado</h2>
-
-        <div class="cards">
-
-            <article class="card">
-                <span class="badge">Inscrições abertas</span>
-
-                <h3>Ações comunitárias</h3>
-
-                <p>
-                    Os voluntários podem participar de atividades
-                    comunitárias e colaborar com diferentes ações sociais.
-                </p>
-
-                <a href="cadastro.html" class="botao">
-                    Quero ser voluntário
-                </a>
-            </article>
-
-            <article class="card">
-                <span class="badge">Participação livre</span>
-
-                <h3>Apoio aos projetos</h3>
-
-                <p>
-                    Pessoas com diferentes conhecimentos podem contribuir
-                    com as atividades desenvolvidas pelo projeto.
-                </p>
-
-                <a href="cadastro.html" class="link-acao">
-                    Fazer cadastro
-                </a>
-            </article>
-
-            <article class="card">
-                <span class="badge">Indisponível</span>
-
-                <h3>Nova ação</h3>
-
-                <p>
-                    As inscrições para esta ação ainda não estão disponíveis.
-                </p>
-
-                <button type="button" class="botao" disabled>
-                    Indisponível no momento
-                </button>
-            </article>
-
-        </div>
-    </section>
-
-    <section>
-        <div class="alerta alerta-erro" role="alert">
-            <strong>Atenção:</strong>
-            algumas ações podem depender de disponibilidade de vagas.
-        </div>
-    </section>
-
-    <section class="demonstracao-modal">
-
-        <input type="checkbox" id="abrir-modal" class="modal-toggle">
-
-        <label for="abrir-modal" class="botao">
-            Ver mensagem de participação
-        </label>
-
-        <div class="modal">
-
-            <div
-                class="modal-conteudo"
-                role="dialog"
-                aria-modal="true"
-                aria-labelledby="titulo-modal"
+            <a
+                href="index.html"
+                aria-label="Página inicial do Projeto Acolher"
             >
 
-                <h2 id="titulo-modal">
-                    Obrigado por participar!
+                <img
+                    src="../imagens/logo.png"
+                    alt="Logo do Projeto Acolher"
+                >
+
+            </a>
+
+            <h1>
+                Projeto Acolher
+            </h1>
+
+        </div>
+
+
+        <input
+            type="checkbox"
+            id="menu-toggle"
+            class="menu-toggle"
+        >
+
+
+        <label
+            for="menu-toggle"
+            class="menu-icon"
+            aria-label="Abrir menu"
+        >
+            ☰
+        </label>
+
+
+        <nav aria-label="Navegação principal">
+
+            <ul>
+
+                <li>
+                    <a href="index.html">
+                        Início
+                    </a>
+                </li>
+
+                <li>
+                    <a href="projetos.html">
+                        Projetos
+                    </a>
+                </li>
+
+                <li>
+                    <a href="cadastro.html">
+                        Cadastro
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <main>
+
+
+        <section class="pagina-cabecalho">
+
+            <span class="tag">
+                Nossos projetos
+            </span>
+
+            <h2>
+                Conheça nossas iniciativas
+            </h2>
+
+            <p>
+                Ações pensadas para fortalecer a solidariedade
+                e promover mudanças positivas na comunidade.
+            </p>
+
+        </section>
+
+
+        <section class="projetos-lista">
+
+
+            <article class="projeto-card">
+
+                <img
+                    src="../imagens/projetos.webp"
+                    alt="Ação social do Projeto Acolher"
+                >
+
+                <div class="projeto-conteudo">
+
+                    <span class="tag">
+                        Ação social
+                    </span>
+
+                    <h3>
+                        Projetos comunitários
+                    </h3>
+
+                    <p>
+                        Desenvolvemos iniciativas voltadas ao apoio
+                        de pessoas e comunidades em situação de
+                        vulnerabilidade.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="projeto-card">
+
+                <img
+                    src="../imagens/doacao.jpg"
+                    alt="Doação realizada pelo Projeto Acolher"
+                >
+
+                <div class="projeto-conteudo">
+
+                    <span class="tag">
+                        Solidariedade
+                    </span>
+
+                    <h3>
+                        Campanhas de doação
+                    </h3>
+
+                    <p>
+                        Arrecadamos recursos e itens essenciais para
+                        apoiar famílias e instituições.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="projeto-card">
+
+                <img
+                    src="../imagens/voluntarios.jpg"
+                    alt="Grupo de voluntários"
+                >
+
+                <div class="projeto-conteudo">
+
+                    <span class="tag">
+                        Voluntariado
+                    </span>
+
+                    <h3>
+                        Rede de voluntários
+                    </h3>
+
+                    <p>
+                        Pessoas interessadas podem contribuir com
+                        tempo, conhecimento e habilidades.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+
+        <section class="cta">
+
+            <div>
+
+                <span class="tag">
+                    Participe
+                </span>
+
+                <h2>
+                    Quer fazer parte do projeto?
                 </h2>
 
                 <p>
-                    Seu interesse em colaborar com o Projeto Acolher
-                    é muito importante para nossas ações.
+                    Cadastre-se para demonstrar seu interesse
+                    em participar das nossas ações.
                 </p>
-
-                <label for="abrir-modal" class="botao">
-                    Fechar
-                </label>
 
             </div>
 
-        </div>
 
-    </section>
+            <a
+                href="cadastro.html"
+                class="btn btn-claro"
+            >
+                Fazer cadastro
+            </a>
 
-</main>
+        </section>
 
-<div class="toast" role="status">
-    Inscrição disponível para novos voluntários.
-</div>
 
-<footer>
-    <p>
-        &copy; 2026 Projeto Acolher. Todos os direitos reservados.
-    </p>
-</footer>
+    </main>
+
+
+    <footer>
+
+        <p>
+            &copy; 2026 Projeto Acolher.
+            Todos os direitos reservados.
+        </p>
+
+    </footer>
 
 </body>
+
 </html>
 
